@@ -431,7 +431,7 @@ export default function Customer() {
       </div>
 
       {/* ── Bottom Nav ── */}
-      <div className="relative z-10 flex-shrink-0 bg-white border-t border-gray-100 px-2 pt-1 pb-5">
+      <div className="relative z-10 flex-shrink-0 bg-white border-t border-gray-100 px-2 pt-1 pb-5" style={{ transform: 'translateZ(0)', willChange: 'transform' }}>
         <div className="flex justify-around items-end">
           {navTabs.map(({ id, label, isAction }) => {
             if (isAction) {
