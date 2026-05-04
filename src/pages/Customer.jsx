@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const CURRENT_PTS = 2450
 const DIAMOND_AT = 4450
@@ -156,6 +157,7 @@ function ChevronRight() {
 }
 
 export default function Customer() {
+  const navigate = useNavigate()
   const [showQR, setShowQR] = useState(false)
   const [selectedReward, setSelectedReward] = useState(null)
   const [activeTab, setActiveTab] = useState('home')
@@ -420,7 +422,10 @@ export default function Customer() {
 
             {/* Sign Out */}
             <div className="mx-4">
-              <button className="w-full bg-white rounded-2xl shadow-sm px-4 py-3.5 text-[14px] font-semibold text-red-500 active:opacity-70 transition-opacity">
+              <button
+                onClick={() => navigate('/login')}
+                className="w-full bg-white rounded-2xl shadow-sm px-4 py-3.5 text-[14px] font-semibold text-red-500 active:opacity-70 transition-opacity"
+              >
                 {T.signOut}
               </button>
             </div>

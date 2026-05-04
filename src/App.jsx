@@ -2,6 +2,7 @@ import { Routes, Route, Navigate, useNavigate, useLocation } from 'react-router-
 import Customer from './pages/Customer'
 import Staff from './pages/Staff'
 import Manager from './pages/Manager'
+import Auth from './pages/Auth'
 
 function DemoNav() {
   const navigate = useNavigate()
@@ -9,10 +10,19 @@ function DemoNav() {
   const isCustomer = pathname.startsWith('/customer')
   const isStaff = pathname.startsWith('/staff')
   const isManager = pathname.startsWith('/manager')
+  const isAuth = pathname.startsWith('/login')
 
   return (
     <div className="hidden sm:flex items-center gap-1 mt-3 bg-white/60 backdrop-blur rounded-full px-1.5 py-1.5 shadow-sm border border-white/80">
       <span className="text-[10px] text-gray-400 font-semibold tracking-widest px-2">DEMO</span>
+      <button
+        onClick={() => navigate('/login')}
+        className={`px-3.5 py-1.5 rounded-full text-[12px] font-semibold transition-all ${
+          isAuth ? 'bg-[#0f9e82] text-white shadow-sm' : 'text-[#6B7280] hover:text-[#1A1A1A]'
+        }`}
+      >
+        Sign In
+      </button>
       <button
         onClick={() => navigate('/customer')}
         className={`px-3.5 py-1.5 rounded-full text-[12px] font-semibold transition-all ${
@@ -67,9 +77,10 @@ export default function App() {
         style={{ flexShrink: 0 }}
       >
         <Routes>
+          <Route path="/login" element={<Auth />} />
           <Route path="/customer" element={<Customer />} />
           <Route path="/staff" element={<Staff />} />
-          <Route path="*" element={<Navigate to="/customer" replace />} />
+          <Route path="*" element={<Navigate to="/login" replace />} />
         </Routes>
       </div>
       <DemoNav />
